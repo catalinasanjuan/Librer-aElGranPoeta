@@ -1,0 +1,18 @@
+http://127.0.0.1:5000/index
+http://127.0.0.1:5000/inventario
+http://127.0.0.1:5000/bodegas
+http://127.0.0.1:5000/reportes
+http://127.0.0.1:5000/rastreo
+
+
+http://127.0.0.1:5000/
+
+python app.py
+
+password123
+
+
+
+python3 app.py
+
+root:00240200
