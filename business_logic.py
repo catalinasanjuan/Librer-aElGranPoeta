@@ -5,24 +5,11 @@ from models import Bodega, Producto
 import os
 from urllib.parse import urlparse
 
-# Configuración de la base de datos (ajusta según tus necesidades)
-#db_config = {
-    #'user': 'root',
-    #'password': '00240200',
-    #'host': 'localhost',
-    #'database': 'libreriagranpoeta'
-#}
-
-
-db_url = os.getenv("MYSQL_URL")  # Cambia al nombre exacto de la variable en Railway
-parsed_url = urlparse(db_url)
-
 db_config = {
-    'user': parsed_url.username,
-    'password': parsed_url.password,
-    'host': parsed_url.hostname,
-    'database': parsed_url.path[1:],  # Elimina el primer "/"
-    'port': parsed_url.port
+    'user': 'root',
+    'password': '00240200',
+    'host': 'localhost',
+    'database': 'libreriagranpoeta'
 }
 
 data_access = DataAccess(db_config)
