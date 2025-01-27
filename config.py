@@ -1,8 +1,9 @@
 
 
 db_config = {
-    'user': 'root',
-    'password': '00240200',
-    'host': 'localhost',
-    'database': 'libreriagranpoeta'
+    'user': parsed_url.username,
+    'password': parsed_url.password,
+    'host': parsed_url.hostname,
+    'database': parsed_url.path[1:],  # Elimina el primer "/"
+    'port': parsed_url.port
 }
