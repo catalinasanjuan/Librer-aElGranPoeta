@@ -17,14 +17,15 @@ Este es un proyecto web desarrollado en **Flask** para la gestión de productos,
 
 ### Clonar el repositorio
 ```bash
- git clone https://github.com/tu_usuario/tu_repositorio.git
- cd tu_repositorio
+ git clone https://github.com/catalinasanjuan/Librer-aElGranPoeta.git
+ cd Librer-aElGranPoeta
+
 ```
 
 ### Crear y activar un entorno virtual
 ```bash
 python -m venv venv
-source venv/bin/activate  # En Windows: venv\Scripts\activate
+source venv/bin/activate  
 ```
 
 ### Instalar dependencias
@@ -88,7 +89,7 @@ app.run(host='0.0.0.0', port=port)
 ---
 
 ## Licencia
-Este proyecto es de uso educativo y no tiene una licencia específica. Puedes modificarlo y adaptarlo según tus necesidades. 💡
+Este proyecto es de uso educativo y no tiene una licencia específica. Puedes modificarlo y adaptarlo según tus necesidades. 
 
 
 ---
