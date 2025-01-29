@@ -87,11 +87,6 @@ def login():
     
     return render_template('login.html')
 
-@app.route('/logout')
-def logout():
-    session.pop('user_id', None)
-    return redirect(url_for('login'))
-
 # Otras rutas protegidas con el decorador @login_required
 
 @app.route('/reportes')
@@ -198,6 +193,12 @@ def descontinuar_producto(codigo):
         return jsonify({'success': True}), 200
     else:
         return jsonify({'success': False}), 400
+    
+@app.route('/logout')
+def logout():
+    session.pop('user_id', None)
+    return redirect(url_for('login'))
+
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
