@@ -1,0 +1,97 @@
+# ibrería El Gran Poeta
+
+Este es un proyecto web desarrollado en **Flask** para la gestión de productos, bodegas y usuarios en una librería. La base de datos está alojada en **AlwaysData**, y la aplicación está desplegada en **Railway**.
+
+## Tecnologías utilizadas
+
+- **Python 3**
+- **Flask** (Framework web)
+- **MySQL** (Base de datos en AlwaysData)
+- **Bootstrap** (Estilización del frontend)
+- **Railway** (Despliegue del servidor)
+- **GitHub** (Control de versiones)
+
+---
+
+## Instalación y ejecución local
+
+### Clonar el repositorio
+```bash
+ git clone https://github.com/tu_usuario/tu_repositorio.git
+ cd tu_repositorio
+```
+
+### Crear y activar un entorno virtual
+```bash
+python -m venv venv
+source venv/bin/activate  # En Windows: venv\Scripts\activate
+```
+
+### Instalar dependencias
+```bash
+pip install -r requirements.txt
+```
+
+### Configurar las variables de entorno
+Crea un archivo **.env** en la raíz del proyecto con las siguientes variables:
+
+```env
+FLASK_APP=app.py
+FLASK_ENV=development
+SECRET_KEY=tu_clave_secreta
+DB_USER=396794
+DB_PASSWORD=admin2025
+DB_HOST=mysql-libreria-el-gran-poeta.alwaysdata.net
+DB_NAME=libreria-el-gran-poeta_bd
+```
+
+> *Railway también usa variables de entorno en la configuración del servicio.*
+
+### Ejecutar la aplicación localmente
+```bash
+flask run
+```
+
+La aplicación estará disponible en **http://127.0.0.1:5000/**
+
+---
+
+## Despliegue en Railway
+
+### Pasos para el despliegue
+1. Subir el código a un repositorio en GitHub.
+2. Crear un nuevo servicio en Railway y conectar el repositorio.
+3. Configurar las **variables de entorno** en Railway.
+4. Asegurar que en `app.py` se defina el puerto dinámicamente:
+```python
+import os
+port = int(os.environ.get("PORT", 5000))
+app.run(host='0.0.0.0', port=port)
+```
+5. Hacer **commit & push** a GitHub para que Railway lo detecte y redepliegue automáticamente.
+
+---
+
+## Rutas disponibles
+
+| Método | Ruta | Descripción |
+|--------|------|-------------|
+| GET | `/` | Página principal (requiere login) |
+| GET/POST | `/login` | Inicio de sesión |
+| GET | `/logout` | Cierre de sesión |
+| GET | `/inventario` | Listado de productos |
+| GET/POST | `/bodegas` | Gestión de bodegas |
+| GET/POST | `/productos/agregar` | Agregar productos |
+| DELETE | `/productos/descontinuar/<int:codigo>` | Eliminar productos |
+| GET | `/test_db` | Prueba de conexión con la base de datos |
+
+---
+
+## Licencia
+Este proyecto es de uso educativo y no tiene una licencia específica. Puedes modificarlo y adaptarlo según tus necesidades. 💡
+
+
+---
+
+
+
