@@ -1,7 +1,9 @@
 #config.py
+import os
+
 db_config = {
-    'user': '396794',  # Tu usuario en AlwaysData
-    'password': 'admin2025',  # La contraseña que configuraste
-    'host': 'mysql-libreria-el-gran-poeta.alwaysdata.net',
-    'database': 'libreria-el-gran-poeta_bd'
+    'user': os.getenv('DB_USER'),
+    'password': os.getenv('DB_PASSWORD'),
+    'host': os.getenv('DB_HOST'),
+    'database': os.getenv('DB_NAME')
 }
