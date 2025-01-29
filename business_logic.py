@@ -5,14 +5,11 @@ from models import Bodega, Producto
 import os
 from urllib.parse import urlparse
 
-db_config = {
-    'user': 'root',
-    'password': '00240200',
-    'host': 'localhost',
-    'database': 'libreriagranpoeta'
-}
+from config import db_config
 
-data_access = DataAccess(db_config)
+
+from data_access import data_access  # ✅ Importa la instancia ya creada
+
 
 
 def obtener_usuario_por_nombre(nombre_usuario):

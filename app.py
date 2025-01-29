@@ -2,24 +2,27 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 from functools import wraps
 import business_logic
-from data_access import DataAccess
 import hashlib
 import os
 from urllib.parse import urlparse
-
-db_config = {
-    'user': 'root',
-    'password': '00240200',
-    'host': 'localhost',
-    'database': 'libreriagranpoeta'
-}
-
-
-data_access = DataAccess(db_config)
+from config import db_config
+from data_access import data_access  # ✅ Importa la instancia ya creada en data_access.py
 
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
+
+@app.route('/test_db')
+def test_db():
+    try:
+        conn = data_access.db  # ✅ Usa la conexión de AlwaysData
+        cursor = conn.cursor()
+        cursor.execute("SHOW TABLES")
+        tables = cursor.fetchall()
+        conn.close()
+        return f"Conexión exitosa. Tablas: {tables}"
+    except Exception as e:
+        return f"Error de conexión: {e}"
 
 # Decorador para requerir login
 def login_required(f):
@@ -37,6 +40,7 @@ def index():
 
 @app.route('/inventario', methods=['GET', 'POST'])
 @login_required
+
 def inventario():
     categorias = business_logic.obtener_categorias()
     titulo = request.args.get('titulo')
@@ -166,10 +170,6 @@ def agregar_producto():
     else:
         return jsonify({'error': 'Error al agregar el producto'}), 400
     
-
-
-
-
 @app.route('/productos/editar/<int:codigo>', methods=['GET', 'POST'])
 @login_required
 def editar_producto(codigo):
@@ -188,11 +188,6 @@ def editar_producto(codigo):
         return render_template('editar_producto.html', producto=producto)
     else:
         return "Producto no encontrado", 404
-
-
-
-
-
 
 
 @app.route('/productos/descontinuar/<int:codigo>', methods=['DELETE'])

@@ -1,9 +1,9 @@
 #data_access.py
 import mysql.connector
+from config import db_config  # ✅ Importar la configuración de la base de datos
 
 class DataAccess:
-    def __init__(self, db_config):
-        self.db_config = db_config
+    def __init__(self):
         self.db = mysql.connector.connect(**db_config)
         self.cursor = self.db.cursor(dictionary=True)
 
@@ -208,3 +208,4 @@ class DataAccess:
             except mysql.connector.Error as err:
                 print(f"Error: {err}")
                 return None
+data_access = DataAccess()
